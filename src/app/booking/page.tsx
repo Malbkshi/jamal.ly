@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { FaCalendarAlt, FaClock, FaUser, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import PageTemplate from '@/components/PageTemplate';
+import { supabase } from '@/lib/supabase';
+import { toast } from 'react-hot-toast';
 
 const services = [
   { id: 1, name: 'العناية بالبشرة' },
@@ -28,6 +30,7 @@ const timeSlots = [
 
 export default function BookingPage() {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     service: '',
     date: '',
@@ -51,11 +54,32 @@ export default function BookingPage() {
     setStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    // For now, we'll just show a success message
-    nextStep();
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase
+        .from('bookings')
+        .insert([
+          {
+            ...formData,
+            status: 'pending',
+          },
+        ])
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      toast.success('تم إرسال طلب الحجز بنجاح! سنتواصل معك قريباً لتأكيد الموعد.');
+      nextStep();
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      toast.error('حدث خطأ أثناء إرسال طلب الحجز. يرجى المحاولة مرة أخرى.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -304,8 +328,9 @@ export default function BookingPage() {
                     <button
                       type="submit"
                       className="btn-primary"
+                      disabled={isSubmitting}
                     >
-                      تأكيد الحجز
+                      {isSubmitting ? 'جاري الإرسال...' : 'تأكيد الحجز'}
                     </button>
                   </div>
                 </form>

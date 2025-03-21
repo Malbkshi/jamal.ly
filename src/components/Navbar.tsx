@@ -68,6 +68,12 @@ const Navbar = () => {
               <span>احجز موعدك الآن</span>
               <FaStar className="mr-1 text-white/80 text-xs" />
             </Link>
+            <Link 
+              href="/admin/bookings" 
+              className="text-primary hover:text-accent transition-colors"
+            >
+              لوحة التحكم
+            </Link>
           </div>
 
           {/* Mobile Navigation Button */}
@@ -141,6 +147,13 @@ const Navbar = () => {
                 <FaMoon className="ml-1 text-white/80" />
                 <span>احجز موعدك الآن</span>
                 <FaStar className="mr-1 text-white/80 text-xs" />
+              </Link>
+              <Link
+                href="/admin/bookings"
+                className={`block px-3 py-2 rounded-md text-base font-medium text-primary hover:text-accent`}
+                onClick={toggleMenu}
+              >
+                لوحة التحكم
               </Link>
             </div>
           </div>

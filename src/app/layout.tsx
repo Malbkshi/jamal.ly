@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Almarai } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { Toaster } from 'react-hot-toast';
 
 const almarai = Almarai({
   variable: "--font-almarai",
@@ -62,6 +63,7 @@ export default function RootLayout({
         className={`${almarai.variable} font-almarai antialiased`}
       >
         {children}
+        <Toaster position="top-center" />
         <Script id="remove-nextjs-icon" strategy="afterInteractive">
           {`
             (function() {
