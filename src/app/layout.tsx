@@ -30,6 +30,14 @@ export const metadata: Metadata = {
       type: 'image/png',
     },
   },
+  manifest: '/manifest.json',
+  themeColor: '#ffffff',
+  viewport: 'width=device-width, initial-scale=1',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'مركز منال الجمال',
+  },
 };
 
 export default function RootLayout({
