@@ -13,14 +13,6 @@ const almarai = Almarai({
 export const metadata: Metadata = {
   title: "مركز منال الجمال",
   description: "مركز متخصص في العناية بالبشرة وإزالة الشعر",
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32' },
-      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.png',
-  },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
   viewport: 'width=device-width, initial-scale=1',
@@ -42,9 +34,6 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180" />
         <style>{`
           #__next-build-watcher,
           [data-nextjs-dialog-left-right],
