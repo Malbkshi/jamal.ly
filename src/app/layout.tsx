@@ -5,31 +5,22 @@ import Script from "next/script";
 import { Toaster } from 'react-hot-toast';
 
 const almarai = Almarai({
-  variable: "--font-almarai",
-  subsets: ["arabic"],
   weight: ["300", "400", "700", "800"],
+  subsets: ["arabic"],
+  variable: "--font-almarai",
 });
 
 export const metadata: Metadata = {
-  title: "مركز منال الجمال للعناية بالبشرة وإزالة الشعر",
-  description: "مركز متخصص في العناية بالبشرة وإزالة الشعر في ليبيا، نقدم خدمات متميزة بأيدي خبراء متخصصين",
+  title: "مركز منال الجمال",
+  description: "مركز متخصص في العناية بالبشرة وإزالة الشعر",
   icons: {
     icon: [
-      {
-        url: '/favicon.ico',
-        sizes: '32x32',
-      },
-      {
-        url: '/images/logo.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: {
-      url: '/images/logo.png',
-      sizes: '180x180',
-      type: 'image/png',
-    },
+    apple: [
+      { url: '/favicon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
@@ -38,6 +29,9 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: 'default',
     title: 'مركز منال الجمال',
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 
