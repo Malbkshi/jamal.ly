@@ -13,6 +13,19 @@ const almarai = Almarai({
 export const metadata: Metadata = {
   title: "مركز منال الجمال",
   description: "مركز متخصص في العناية بالبشرة وإزالة الشعر",
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-64x64.png', sizes: '64x64', type: 'image/png' },
+      { url: '/favicon-128x128.png', sizes: '128x128', type: 'image/png' },
+      { url: '/favicon-256x256.png', sizes: '256x256', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicon-180x180.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
   viewport: 'width=device-width, initial-scale=1',
@@ -34,6 +47,9 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
         <style>{`
           #__next-build-watcher,
           [data-nextjs-dialog-left-right],
