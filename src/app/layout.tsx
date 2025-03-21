@@ -43,6 +43,8 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <head>
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180" />
         <style>{`
           #__next-build-watcher,
           [data-nextjs-dialog-left-right],
