@@ -15,18 +15,34 @@ const services = [
   { id: 6, name: 'نضارة البشرة' },
 ];
 
-const timeSlots = [
-  '10:00 صباحاً',
-  '11:00 صباحاً',
-  '12:00 ظهراً',
-  '1:00 مساءً',
-  '2:00 مساءً',
-  '3:00 مساءً',
-  '4:00 مساءً',
-  '5:00 مساءً',
-  '6:00 مساءً',
-  '7:00 مساءً',
-];
+const generateTimeSlots = () => {
+  const slots: string[] = [];
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentDay = now.getDate();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+
+  // For March, use 12 PM to 12 AM
+  if (currentMonth === 2) { // March is month 2 (0-based index)
+    for (let hour = 12; hour < 24; hour++) {
+      const displayHour = hour % 12 || 12; // Convert 24h to 12h format
+      const period = hour < 12 ? 'صباحاً' : 'مساءً';
+      slots.push(`${displayHour}:00 ${period}`);
+    }
+  } else {
+    // For other months, use 9 AM to 9 PM
+    for (let hour = 9; hour < 21; hour++) {
+      const displayHour = hour % 12 || 12; // Convert 24h to 12h format
+      const period = hour < 12 ? 'صباحاً' : 'مساءً';
+      slots.push(`${displayHour}:00 ${period}`);
+    }
+  }
+
+  return slots;
+};
+
+const timeSlots = generateTimeSlots();
 
 export default function BookingPage() {
   const [step, setStep] = useState(1);
