@@ -303,6 +303,7 @@ export default function BookingPage() {
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         aria-label="إدخال الاسم"
+                        autoComplete="name"
                       />
                     </div>
                     <div>
@@ -318,6 +319,7 @@ export default function BookingPage() {
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         aria-label="إدخال رقم الهاتف"
+                        autoComplete="tel"
                       />
                     </div>
                     <div>
@@ -332,6 +334,7 @@ export default function BookingPage() {
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         aria-label="إدخال البريد الإلكتروني"
+                        autoComplete="email"
                       />
                     </div>
                     <div>
@@ -346,6 +349,7 @@ export default function BookingPage() {
                         rows={3}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         aria-label="إدخال ملاحظات إضافية"
+                        autoComplete="off"
                       ></textarea>
                     </div>
                   </div>
