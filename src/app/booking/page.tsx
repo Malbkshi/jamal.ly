@@ -89,9 +89,7 @@ export default function BookingPage() {
           message: error.message,
           details: error.details,
           hint: error.hint,
-          code: error.code,
-          table: error.table,
-          column: error.column
+          code: error.code
         });
         throw error;
       }
@@ -187,6 +185,7 @@ export default function BookingPage() {
                           className="peer hidden"
                           onChange={handleChange}
                           checked={formData.service === service.name}
+                          aria-label={`اختيار خدمة ${service.name}`}
                         />
                         <label
                           htmlFor={`service-${service.id}`}
@@ -211,6 +210,7 @@ export default function BookingPage() {
                       onClick={nextStep}
                       disabled={!formData.service}
                       className={`btn-primary ${!formData.service ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      aria-label="الانتقال للخطوة التالية"
                     >
                       التالي
                     </button>
@@ -232,6 +232,7 @@ export default function BookingPage() {
                       value={formData.date}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      aria-label="اختيار تاريخ الحجز"
                     />
                   </div>
 
@@ -250,6 +251,7 @@ export default function BookingPage() {
                             className="peer hidden"
                             onChange={handleChange}
                             checked={formData.time === time}
+                            aria-label={`اختيار موعد ${time}`}
                           />
                           <label
                             htmlFor={`time-${index}`}
@@ -266,6 +268,7 @@ export default function BookingPage() {
                     <button
                       onClick={prevStep}
                       className="bg-gray-200 text-foreground hover:bg-gray-300 transition-colors py-2 px-4 rounded-xl"
+                      aria-label="الانتقال للخطوة السابقة"
                     >
                       السابق
                     </button>
@@ -275,6 +278,7 @@ export default function BookingPage() {
                       className={`btn-primary ${
                         !formData.date || !formData.time ? 'opacity-50 cursor-not-allowed' : ''
                       }`}
+                      aria-label="الانتقال للخطوة التالية"
                     >
                       التالي
                     </button>
@@ -298,6 +302,7 @@ export default function BookingPage() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        aria-label="إدخال الاسم"
                       />
                     </div>
                     <div>
@@ -312,6 +317,7 @@ export default function BookingPage() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        aria-label="إدخال رقم الهاتف"
                       />
                     </div>
                     <div>
@@ -325,6 +331,7 @@ export default function BookingPage() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        aria-label="إدخال البريد الإلكتروني"
                       />
                     </div>
                     <div>
@@ -338,6 +345,7 @@ export default function BookingPage() {
                         onChange={handleChange}
                         rows={3}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        aria-label="إدخال ملاحظات إضافية"
                       ></textarea>
                     </div>
                   </div>
@@ -347,6 +355,7 @@ export default function BookingPage() {
                       type="button"
                       onClick={prevStep}
                       className="bg-gray-200 text-foreground hover:bg-gray-300 transition-colors py-2 px-4 rounded-xl"
+                      aria-label="الانتقال للخطوة السابقة"
                     >
                       السابق
                     </button>
@@ -354,6 +363,7 @@ export default function BookingPage() {
                       type="submit"
                       className="btn-primary"
                       disabled={isSubmitting}
+                      aria-label="تأكيد الحجز"
                     >
                       {isSubmitting ? 'جاري الإرسال...' : 'تأكيد الحجز'}
                     </button>
