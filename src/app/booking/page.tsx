@@ -237,10 +237,10 @@ export default function BookingPage() {
                   </div>
 
                   <div className="mb-8">
-                    <label className="block text-foreground/80 mb-2">
+                    <label htmlFor="time-slots" className="block text-foreground/80 mb-2">
                       الوقت
                     </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    <div id="time-slots" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                       {timeSlots.map((time, index) => (
                         <div key={index} className="relative">
                           <input
