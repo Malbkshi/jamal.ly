@@ -59,6 +59,20 @@ export default function BookingPage() {
     setIsSubmitting(true);
 
     try {
+      console.log('Submitting booking with data:', formData);
+      
+      // First, check if we can connect to Supabase
+      const { data: testData, error: testError } = await supabase
+        .from('bookings')
+        .select('count')
+        .limit(1);
+      
+      if (testError) {
+        console.error('Supabase connection test failed:', testError);
+        throw new Error('Failed to connect to database');
+      }
+
+      // Now try to insert the booking
       const { data, error } = await supabase
         .from('bookings')
         .insert([
@@ -70,8 +84,19 @@ export default function BookingPage() {
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code,
+          table: error.table,
+          column: error.column
+        });
+        throw error;
+      }
 
+      console.log('Booking submitted successfully:', data);
       toast.success('تم إرسال طلب الحجز بنجاح! سنتواصل معك قريباً لتأكيد الموعد.');
       nextStep();
     } catch (error) {

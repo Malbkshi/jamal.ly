@@ -16,15 +16,26 @@ export default function AdminBookingsPage() {
 
   const fetchBookings = async () => {
     try {
+      console.log('Fetching bookings...');
       const { data, error } = await supabase
         .from('bookings')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error fetching bookings:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        });
+        throw error;
+      }
+
+      console.log('Fetched bookings:', data);
       setBookings(data || []);
     } catch (error) {
-      console.error('Error fetching bookings:', error);
+      console.error('Error in fetchBookings:', error);
       toast.error('حدث خطأ أثناء جلب الحجوزات');
     } finally {
       setLoading(false);
